@@ -1195,3 +1195,111 @@ echo $data['età'];      // Output: 30
 In questo esempio, stiamo dichiarando una stringa JSON `$jsonString` che rappresenta un oggetto. Utilizziamo `json_decode()` per convertire la stringa JSON in un array associativo specificando il secondo parametro come `true`. Successivamente, possiamo accedere ai valori dell'array utilizzando le chiavi corrispondenti.
 
 Le funzioni `json_encode()` e `json_decode()` sono molto utili per lavorare con dati JSON in PHP, consentendo la conversione tra stringhe JSON e strutture dati native del linguaggio.
+
+---
+
+## CRUD (Create, Read, Update, Delete) per manipolare dati in PHP:
+
+La procedura CRUD è una pratica comune per interagire con un database o qualsiasi altro tipo di archivio dati. Consiste in quattro operazioni di base:
+
+1. **Create (Creazione)**: Consente di creare nuovi dati e inserirli nel database. In PHP, puoi utilizzare il linguaggio SQL per eseguire un'istruzione di inserimento (`INSERT`) per aggiungere una nuova riga di dati a una tabella del database. Ad esempio:
+
+   ```php
+   // Connessione al database
+
+   $sql = "INSERT INTO users (name, email) VALUES ('John Doe', 'john@example.com')";
+   $result = mysqli_query($connection, $sql);
+
+   if ($result) {
+       echo "Dati inseriti con successo!";
+   } else {
+       echo "Errore durante l'inserimento dei dati.";
+   }
+   ```
+
+2. **Read (Lettura)**: Consente di recuperare i dati esistenti dal database. In PHP, puoi utilizzare un'istruzione SQL di selezione (`SELECT`) per recuperare dati da una tabella del database. Ad esempio:
+
+   ```php
+   // Connessione al database
+
+   $sql = "SELECT * FROM users";
+   $result = mysqli_query($connection, $sql);
+
+   if (mysqli_num_rows($result) > 0) {
+       while ($row = mysqli_fetch_assoc($result)) {
+           echo "Nome: " . $row['name'] . "<br>";
+           echo "Email: " . $row['email'] . "<br>";
+           echo "<br>";
+       }
+   } else {
+       echo "Nessun dato trovato.";
+   }
+   ```
+
+   In questo esempio, stiamo selezionando tutti i dati dalla tabella "users" del database e visualizzandoli a schermo utilizzando un loop `while`.
+
+3. **Update (Aggiornamento)**: Consente di modificare i dati esistenti nel database. In PHP, puoi utilizzare un'istruzione SQL di aggiornamento (`UPDATE`) per modificare i valori delle colonne esistenti in una tabella del database. Ad esempio:
+
+   ```php
+   // Connessione al database
+
+   $sql = "UPDATE users SET name='Jane Doe' WHERE id=1";
+   $result = mysqli_query($connection, $sql);
+
+   if ($result) {
+       echo "Dati aggiornati con successo!";
+   } else {
+       echo "Errore durante l'aggiornamento dei dati.";
+   }
+   ```
+
+   In questo esempio, stiamo aggiornando il nome dell'utente con ID 1 nella tabella "users" del database.
+
+4. **Delete (Eliminazione)**: Consente di eliminare dati esistenti dal database. In PHP, puoi utilizzare un'istruzione SQL di eliminazione (`DELETE`) per rimuovere una o più righe di dati da una tabella del database. Ad esempio:
+
+   ```php
+   // Connessione al database
+
+   $sql = "DELETE FROM users WHERE id=1";
+   $result = mysqli_query($connection, $sql);
+
+   if ($result) {
+       echo "Dati eliminati con successo!";
+   } else {
+       echo "Errore durante l'eliminazione dei dati.";
+   }
+   ```
+
+   In questo esempio, stiamo eliminando l'utente con ID 1 dalla tabella "users" del database.
+
+    È importante notare che la connessione al database e l'utilizzo delle query SQL dipenderanno dalla libreria o dall'API che stai utilizzando per l'interazione con il database (ad esempio, MySQLi o PDO). Assicurati di adattare il codice in base alle tue esigenze e alle specifiche del tuo sistema.
+
+    La procedura CRUD è una base fondamentale per lavorare con dati in PHP e rappresenta un modo comune per creare, leggere, aggiornare ed eliminare informazioni all'interno di un database.
+
+---
+
+## Content-Type
+
+L'header "Content-Type" è un'intestazione HTTP che specifica il tipo di dati contenuti nel corpo della richiesta o della risposta. In PHP, puoi utilizzare l'header "Content-Type" per indicare il tipo di dati che stai inviando o ricevendo, consentendo al client o al server di interpretare correttamente i dati.
+
+Ecco alcuni esempi comuni di valori utilizzati nell'header "Content-Type":
+
+- `text/plain`: Indica che il corpo della richiesta o della risposta contiene dati di testo semplice.
+- `text/html`: Indica che il corpo della richiesta o della risposta contiene dati HTML.
+- `application/json`: Indica che il corpo della richiesta o della risposta contiene dati JSON.
+- `application/xml`: Indica che il corpo della richiesta o della risposta contiene dati XML.
+- `multipart/form-data`: Indica che il corpo della richiesta contiene dati di un modulo HTML con codifica "multipart/form-data", comunemente utilizzato per l'invio di file e dati binari.
+
+Ecco un esempio di come impostare l'header "Content-Type" in PHP:
+
+```php
+header("Content-Type: application/json");
+```
+
+In questo esempio, stiamo impostando l'header "Content-Type" su "application/json", indicando che il corpo della risposta conterrà dati JSON.
+
+È importante impostare correttamente l'header "Content-Type" per garantire una corretta interpretazione dei dati da parte del client o del server. Ad esempio, se stai inviando dati JSON come risposta, è buona pratica impostare l'header "Content-Type" su "application/json" in modo che il client sappia che i dati sono in formato JSON.
+
+Ricorda che l'header "Content-Type" può essere impostato sia nella risposta inviata dal server che nella richiesta inviata dal client, a seconda del contesto in cui viene utilizzato.
+
+Spero che questa spiegazione sia utile per comprendere l'utilizzo dell'header "Content-Type" in PHP!
