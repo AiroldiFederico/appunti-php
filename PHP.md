@@ -1303,4 +1303,3 @@ In questo esempio, stiamo impostando l'header "Content-Type" su "application/jso
 
 Ricorda che l'header "Content-Type" può essere impostato sia nella risposta inviata dal server che nella richiesta inviata dal client, a seconda del contesto in cui viene utilizzato.
 
-Spero che questa spiegazione sia utile per comprendere l'utilizzo dell'header "Content-Type" in PHP!
