@@ -620,6 +620,7 @@ print_r($evenNumbers);
 ```
 
 In questo esempio, utilizzando la arrow function con `array_filter()`, filtriamo gli elementi dell'array `$numbers` e creiamo un nuovo array `$evenNumbers` contenente solo i numeri pari. Il risultato verrà stampato utilizzando `print_r()`.
+
 ---
 
 
